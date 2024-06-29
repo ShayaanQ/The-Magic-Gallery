@@ -1,10 +1,6 @@
-import { url } from "inspector";
-import { getModifiedCookieValues } from "next/dist/server/web/spec-extension/adapters/request-cookies";
-import Link from "next/link";
-import { mock } from "node:test";
 import { db } from "~/server/db";
 
-
+export const dynamic = "force-dynamic";
 
 const mockUrls = [
   "https://utfs.io/f/11c72a1b-e0dc-4574-81da-55c70cc7d74d-ajib30.jpeg",
