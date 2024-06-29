@@ -2,6 +2,9 @@ import { url } from "inspector";
 import { getModifiedCookieValues } from "next/dist/server/web/spec-extension/adapters/request-cookies";
 import Link from "next/link";
 import { mock } from "node:test";
+import { db } from "~/server/db";
+
+
 
 const mockUrls = [
   "https://utfs.io/f/11c72a1b-e0dc-4574-81da-55c70cc7d74d-ajib30.jpeg",
@@ -15,12 +18,21 @@ const mockImages = mockUrls.map((url, index) => ({
   url,
 }));
 
-export default function HomePage() {
+
+
+export default async function HomePage() {
+  const posts = await db.query.posts.findMany();
+
+  console.log(posts);
+
   return (
     <main className="">
       <div className="flex flex-wrap gap-4">
-        {[...mockImages, ...mockImages, ...mockImages].map((image) => (
-          <div key={image.id} className="w-48">
+        {posts.map((post) => (
+          <div key={post.id}>{post.name}</div>
+        ))}
+        {[...mockImages, ...mockImages, ...mockImages].map((image, index) => (
+          <div key={image.id + "-" + index} className="w-48">
             <img src={image.url}/>
           </div>
       ))}
