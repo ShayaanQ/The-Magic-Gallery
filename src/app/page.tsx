@@ -6,31 +6,27 @@ import { getMyImages } from "~/server/queries";
 export const dynamic = "force-dynamic";
 
 async function Images() {
-
   const images = await getMyImages();
 
   return (
-  <div className="flex flex-wrap justify-center gap-4 p-4">
-    {[...images, ...images, ...images, ...images].map((image) => (
-    <div key={image.id} className="flex h-48 w-48 flex-col">
-      <Link href={`/img/${image.id}`}>
-      <Image
-      src={image.url} 
-      style={{objectFit: "contain"}}
-      width={192}
-      height={192}
-      alt={image.name}
-      />
-      </Link>
-      <div>{image.name}</div>
+    <div className="flex flex-wrap justify-center gap-4 p-4">
+      {images.map((image) => (
+        <div key={image.id} className="flex h-48 w-48 flex-col image-container">
+          <Link href={`/img/${image.id}`}>
+            <Image
+              src={image.url}
+              className="cropped-image" // Add the class here
+              width={192}
+              height={192}
+              alt={image.name}
+            />
+          </Link>
+          <div>{image.name}</div>
+        </div>
+      ))}
     </div>
-  ))}
-  </div>
   );
 }
-
-  
-
 
 export default async function HomePage() {
   return (
@@ -39,9 +35,8 @@ export default async function HomePage() {
         <div className="w-full h-full text-2xl text-center">Please Sign In Above </div>
       </SignedOut>
       <SignedIn>
-        <Images/>
+        <Images />
       </SignedIn>
-      
     </main>
   );
 }

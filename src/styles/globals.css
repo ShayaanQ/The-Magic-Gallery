@@ -12,5 +12,15 @@ dialog {
     max-height: 100vh;
 }
 
+/* globals.css */
+.cropped-image {
+    width: 192px; /* Adjust width as needed */
+    height: 192px; /* Adjust height as needed */
+    object-fit: cover;
+    object-position: center;
+}
 
+.image-container {
+    margin-bottom: 16px; /* Adjust margin as needed */
+}
   
