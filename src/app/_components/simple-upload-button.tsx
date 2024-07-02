@@ -90,11 +90,11 @@ function LoadingSpinnerSVG() {
       onUploadError(error) {
         posthog.capture("upload_error", { error });
         toast.dismiss("upload-begin");
-        toast.error("Upload failed");
+        toast.error("Upload Failed");
       },
       onClientUploadComplete() {
         toast.dismiss("upload-begin");
-        toast("Upload complete!");
+        toast("Upload Complete!");
   
         router.refresh();
       },
