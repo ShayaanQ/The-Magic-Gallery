@@ -90,5 +90,15 @@ dialog:modal {
   
   .image-container {
     margin-bottom: 16px; /* Adjust margin as needed */
-  }
-  
+}
+
+.spinner_ajPY {
+    transform-origin: center;
+    animation: spinner_AtaB 0.75s infinite linear;
+}
+
+@keyframes spinner_AtaB {
+    100% {
+      transform: rotate(360deg);
+    }
+}

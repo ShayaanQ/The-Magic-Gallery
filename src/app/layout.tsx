@@ -10,6 +10,7 @@ import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
 import { Toaster } from "~/components/ui/sonner";
+import { CSPostHogProvider } from "./_analytics/provider";
 
 
 
@@ -34,6 +35,7 @@ export default function RootLayout({
 }) {
   return (
     <ClerkProvider>
+      <CSPostHogProvider>
     <html lang="en">
     <NextSSRPlugin
           /**
@@ -54,6 +56,7 @@ export default function RootLayout({
         <Toaster />
       </body>
     </html>
+    </CSPostHogProvider>
     </ClerkProvider>
   );
 }
