@@ -15,7 +15,7 @@ async function Images() {
           <Link href={`/img/${image.id}`}>
             <Image
               src={image.url}
-              className="cropped-image" // Add the class here
+              className="cropped-image"
               width={192}
               height={192}
               alt={image.name}

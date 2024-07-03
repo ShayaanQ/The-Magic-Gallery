@@ -10,7 +10,7 @@ export async function getMyImages() {
 
     const user = auth();
 
-    if(!user.userId)throw new Error("Unauthorized");
+    if(!user.userId) throw new Error("Unauthorized");
 
 
 
@@ -32,9 +32,9 @@ export async function getImage(id: number) {
     });
 
 
-    if(!image)throw new Error("Image Not Found");
+    if(!image) throw new Error("Image Not Found");
 
-    if(image.userId !== user.userId)throw new Error("Unauthorized");
+    if(image.userId !== user.userId) throw new Error("Unauthorized");
 
     return image;
 }   
@@ -42,19 +42,20 @@ export async function getImage(id: number) {
 export async function deleteImage(id: number) {
     const user = auth();
 
-    if(!user.userId)throw new Error("Unauthorized");
+    if(!user.userId) throw new Error("Unauthorized");
 
     await db
     .delete(images)
     .where(and(eq(images.id, id), eq(images.userId, user.userId)));
 
-    analyticsServerClient.capture({
+   analyticsServerClient.capture({
         distinctId: user.userId,
         event: "delete image",
         properties: {
           imageId: id,
         },
-      });
+    });
+      
     
     redirect("/");
 }

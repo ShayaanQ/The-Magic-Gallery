@@ -1,18 +1,31 @@
-import { Modal } from "./modal";
-import FullPageImageView from "~/common/full-image-page";
+'use client';
 
-export default  async function PhotoModal({
-  params: { id: photoId },
-}: {
-  params: { id: string };
-}) {
+import { type ElementRef, useEffect, useRef } from 'react';
+import { useRouter } from 'next/navigation';
+import { createPortal } from 'react-dom';
 
-  const idAsNumber = Number(photoId);
-  if(Number.isNaN(idAsNumber))throw new Error("Invalid Photo Id");
+export function Modal({ children }: { children: React.ReactNode }) {
+  const router = useRouter();
+  const dialogRef = useRef<ElementRef<'dialog'>>(null);
 
-  return (
-    <Modal>
-      <FullPageImageView photoId={photoId} />
-    </Modal>
+  useEffect(() => {
+    if (!dialogRef.current?.open) {
+      dialogRef.current?.showModal();
+    }
+  }, []);
+
+  function onDismiss() {
+    router.back();
+  }
+
+  return createPortal(
+      <dialog 
+      ref={dialogRef} 
+      className="m-0 h-screen w-screen bg-black/50 text-white"
+      onClose={onDismiss}>
+        {children}
+        
+      </dialog>,
+    document.getElementById('modal-root')!
   );
 }

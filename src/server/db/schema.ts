@@ -10,12 +10,7 @@ import {
   varchar,
 } from "drizzle-orm/pg-core";
 
-/**
- * This is an example of how to use the multi-project schema feature of Drizzle ORM. Use the same
- * database instance for multiple projects.
- *
- * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
- */
+
 export const createTable = pgTableCreator((name) => `gallery_${name}`);
 
 export const images = createTable(
@@ -28,7 +23,7 @@ export const images = createTable(
     userId: varchar("user_id", { length: 256 }).notNull(),
 
 
-    createdAt: timestamp("created_at", { withTimezone: true })
+    createdAt: timestamp("created_at")
       .default(sql`CURRENT_TIMESTAMP`)
       .notNull(),
     updatedAt: timestamp("updatedAt", { withTimezone: true }),
