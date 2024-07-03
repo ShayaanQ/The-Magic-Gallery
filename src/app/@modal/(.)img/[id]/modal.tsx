@@ -26,6 +26,6 @@ export function Modal({ children }: { children: React.ReactNode }) {
         {children}
         
       </dialog>,
-    document.getElementById('modal-root')!
+    document.getElementById('modal-root')!,
   );
 }
