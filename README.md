@@ -1,6 +1,6 @@
 # The Magic Gallery
 
-The Magic Gallery is a full-featured gallery application where users can create accounts, upload and delete images, and enjoy a seamless gallery experience. This project leverages various modern tools and libraries including Clerk for authentication, Sentry for error tracking, shadcn for UI components, UploadThing for file uploads, PostHog for analytics, and UpStash for database needs.
+The Magic Gallery is a full-featured gallery application where users can create accounts, upload/delete images, and enjoy a seamless gallery experience. This project leverages various modern tools and libraries including Clerk for authentication, Sentry for error tracking, shadcn for UI components, UploadThing for file uploads, PostHog for analytics, and UpStash for database needs.
 
 ## Table of Contents
 
